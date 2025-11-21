@@ -1,0 +1,11 @@
+{
+  "name": "onmart-superstore",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev:server & npm run dev:client",
+    "dev:server": "npm --prefix backend run dev",
+    "dev:client": "npm --prefix frontend run dev",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "start": "npm --prefix backend start"
+  }
+}

@@ -1,7 +1,15 @@
 import { LowSync, JSONFileSync } from 'lowdb';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { existsSync, mkdirSync } from 'fs';
 
-const file = join(process.cwd(), 'backend', 'src', 'data', 'db.json');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const dataDir = join(__dirname, '..', 'data');
+if (!existsSync(dataDir)) {
+  mkdirSync(dataDir, { recursive: true });
+}
+
+const file = join(dataDir, 'db.json');
 const adapter = new JSONFileSync(file);
 const defaultData = {
   users: [],
